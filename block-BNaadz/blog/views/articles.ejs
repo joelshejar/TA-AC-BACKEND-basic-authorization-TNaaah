@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheet/style.css" />
+    <title>Blogs</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a>
+      <nav>
+        <ul>
+          <li>
+            <a href="/article">articles</a>
+          </li>
+          <%if(user){%>
+          <li>
+            <a href="/article/new">add article</a>
+          </li>
+          <li>
+            <a href="/users/logout">logout</a>
+          </li>
+          <%}else{%>
+          <li>
+            <a href="/users/signup">signup</a>
+          </li>
+          <li>
+            <a href="/users/login">login</a>
+          </li>
+          <% }%>
+        </ul>
+      </nav>
+    </header>
+    <% if(user){%>
+    <div class="users">Welcome <%= user.fullName()%></div>
+    <%}%>
+    <ul>
+      <% articles.forEach((article)=>{ %>
+      <li>
+        <h3><%= article.title%></h3>
+        <p><%= article.description%></p>
+        <p>Written by: <span><%= article.author%></span></p>
+        <a href="/article/<%= article._id %>/detail">
+          <button class="btn">See more</button>
+        </a>
+      </li>
+      <%})%>
+    </ul>
+  </body>
+</html>

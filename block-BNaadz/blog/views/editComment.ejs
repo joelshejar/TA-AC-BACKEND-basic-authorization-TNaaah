@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a>
+      <nav>
+        <ul>
+          <li>
+            <a href="/article">articles</a>
+          </li>
+          <%if(user){%>
+          <li>
+            <a href="/article/new">add article</a>
+          </li>
+          <li>
+            <a href="/users/logout">logout</a>
+          </li>
+          <%}else{ %>
+          <a href="/users/signup">signup</a>
+          <a href="/users/login">login</a>
+          <%}%>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>edit comments</h1>
+      <form action="/comment/<%= data._id%>/commentedit" method="POST">
+        <input type="text" placeholder="enter author" name="name" value="<%= data.name %>" />
+        <input type="text" name="title" placeholder="enter comemnt" value="<%= data.title %>"/>
+        <button type="submit">add comment</button>
+      </form>
+    </main>
+  </body>
+</html>
