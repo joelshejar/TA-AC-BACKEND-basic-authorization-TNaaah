@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a>
+      <nav>
+        <ul>
+          <li>
+            <a href="/article">articles</a>
+          </li>
+          <%if(user){%>
+            <li>
+              <a href="/article/new">add article</a>
+            </li>
+            <li>
+              <a href="/users/logout">logout</a>
+            </li>
+          <%}else{ %>
+          <a href="/users/signup">signup</a>
+          <a href="/users/login">login</a>
+          <%}%>
+        </ul>
+      </nav>
+    </header>
+    <form action="/article" method="POST">
+      <input type="text" name="title" id="" placeholder="Enter Title" />
+      <textarea
+        name="description"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Write Something"
+      ></textarea>
+      <input type="text" name="author" placeholder="add author" />
+      <button type="submit">add articles</button>
+    </form>
+  </body>
+</html>

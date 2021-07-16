@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheet/style.css" />
+    <title>Handeling Forms 👇</title>
+  </head>
+  <body class="home-index">
+    <div class="container">
+      <header>
+        <a href="/">Home</a>
+        <nav>
+          <ul>
+            <%if(!user) { %>
+              <li>
+                <a href="/users/login">login</a>
+              </li>
+              <li>
+                <a href="/article">articles</a>
+              </li>
+            <%}%>
+          </ul>
+        </nav>
+      </header>
+      <main>
+          <h1>create account</h1>
+          <% if(error) {%>
+          <p><%= error%></p>
+          <%}%>
+          <form action="/users/signup" method="POST">
+              <label for="firstname">First Name</label>
+              <input type="text" name="firstname" placeholder="first name" id="firstname" />
+              <label for="lastname">Last Name</label>
+              <input type="text" name="lastname" placeholder="last name" id="lastname" />
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="enter email"
+              />
+              <label for="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+              />
+              <label for="city">city</label>
+              <input type="text" name="city" id="city" placeholder="enter your city" />
+            <button type="submit">Submit</button>
+          </form>
+      </main>
+    </div>
+  </body>
+</html>

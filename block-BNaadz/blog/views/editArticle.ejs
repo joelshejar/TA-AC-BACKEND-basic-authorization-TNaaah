@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+      <header>
+        <a href="/">Home</a>
+        <a href="/users/signup">signup</a>
+        <a href="/users/login">login</a>
+        <a href="/users/logout">logout</a>
+        <a href="/article">articles</a>
+        <a href="/article/new">add article</a>
+      </header>
+    <form action="/article/<%=  data.slug %>/edit" method="POST">
+      <input type="text" name="title" id="" placeholder="Enter Title" value="<%= data.title %>"/>
+      <textarea
+        name="description"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Write Something"
+      > <%= data.description%> </textarea>
+      <input type="text" name="author" placeholder="add author" value="<%= data.author %>" />
+      <button type="submit">add articles</button>
+    </form>
+  </body>
+</html>

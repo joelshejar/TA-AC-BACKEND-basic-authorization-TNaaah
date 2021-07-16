@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">Home</a>
+      <nav>
+        <ul>
+          <li>
+            <a href="/article">articles</a>
+          </li>
+          <%if(user){%>
+            <li>
+              <a href="/article/new">add article</a>
+            </li>
+            <li>
+              <a href="/users/logout">logout</a>
+            </li>
+          <%}else{ %>
+          <a href="/users/signup">signup</a>
+          <a href="/users/login">login</a>
+          <%}%>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2><%= data.title %></h2>
+      <p><%= data.description %></p>
+      <p><%= data.likes.length%></p>
+      <a href="/article/<%= data.slug%>/like">like</a>
+      <p><%= data.author%></p>
+      <a href="/article/<%= data.slug%>/edit">edit</a>
+      <a href="/article/<%= data._id%>/delete">delete</a>
+      <form action="/article/<%= data._id%>/comment" method="POST">
+        <input type="text" placeholder="enter author" name="name" />
+        <input type="text" name="title" placeholder="enter comemnt" />
+        <button type="submit">add comment</button>
+      </form>
+      <div>
+        <h1>comments</h1>
+        <% data.comments.forEach(elem => { %>
+        <div>
+          <p><%= elem.title %></p>
+          <h2><%= elem.name %></h2>
+          <p><%= elem.like.length%></p>
+          <a href="/comment/<%= elem._id%>/commentlike">like</a>
+          <a href="/comment/<%= elem._id%>/commentedit">edit</a>
+          <a href="/comment/<%= elem._id%>/commentdelete">delete</a>
+        </div>
+        <%}) %>
+      </div>
+    </main>
+  </body>
+</html>
