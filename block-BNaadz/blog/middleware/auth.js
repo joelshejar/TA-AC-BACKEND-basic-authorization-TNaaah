@@ -1,5 +1,5 @@
 const Article = require('../models/Article')
-let Users = require('../models/Users')
+let Users = require('../models/User')
 module.exports = {
     loggedInUser:(req, res, next)=> {
         if(req.session && req.session.userId) {

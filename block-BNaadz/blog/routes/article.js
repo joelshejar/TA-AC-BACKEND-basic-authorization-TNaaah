@@ -3,7 +3,7 @@ const { render } = require("../app");
 var router = express.Router();
 var Article = require("../models/Article");
 var Comment = require("../models/Comment");
-var Users = require("../models/Users");
+var Users = require("../models/User");
 var auth = require("../middleware/auth");
 
 router.get("/", (req, res, next) => {
