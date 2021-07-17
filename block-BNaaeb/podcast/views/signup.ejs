@@ -1,0 +1,48 @@
+<%- include('partials/header') -%>
+
+<main class="home-index">
+  <div id="container">
+    <section>
+      <h1>Create Account</h1>
+    </section>
+
+    <form action="/users/signup" method="POST">
+      <div class="form-control">
+        <label for="text"> Name</label>
+        <input type="text" name="name" placeholder="enter your name" />
+        <small class="display"></small>
+      </div>
+      <div class="form-control">
+        <label for="text">Email</label>
+        <input
+          id="text"
+          type="email"
+          name="email"
+          placeholder="arya@stark.com"
+        />
+        <small class="display"></small>
+      </div>
+
+      <div class="form-control">
+        <label for="text">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+        />
+      </div>
+      <div class="form-control">
+        <label for="text">Membership</label>
+        <select name="category" id="">
+          <option value="free">free</option>
+          <option value="vip">vip</option>
+          <option value="premium">premium</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</main>
+<%- include('partials/footer') -%>

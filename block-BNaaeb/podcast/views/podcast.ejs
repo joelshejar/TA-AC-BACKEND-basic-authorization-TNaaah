@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+<main>
+  <!-- display categories -->
+  <% if(user && user.isAdmin) { %>
+  <li class="category">
+    <h4>List of categories</h4>
+    <div>
+      <a href="/podcasts">View all</a>
+    </div>
+    <%if(categories.length && user) { %> <% categories.forEach((category)=>{ %>
+    <div>
+      <a href="/podcasts/podcast/<%= category%>"> <%= category%> </a>
+    </div>
+    <% }) } %>
+  </li>
+  <%}%>
+  <!-- display podcasts -->
+  <ul class="index-root" id="item-root">
+    <%if(podcasts.length) { %> <% podcasts.forEach((item)=>{ %>
+    <li>
+      <h3><%= item.title%></h3>
+      <div class="videos">
+        <video src="/uploads/<%= item.file%>" controls></video>
+      </div>
+      <p><%= item.types%></p>
+      <h5>likes: <span><%= item.likes%></span></h5>
+      <a href="/podcasts/<%=item.id%>">
+        <button class="btn">See more</button>
+      </a>
+    </li>
+    <% }) %> <% } else {%>
+    <h2>No podcasts available</h2>
+    <% }%>
+  </ul>
+</main>
+<%- include('partials/footer') -%>

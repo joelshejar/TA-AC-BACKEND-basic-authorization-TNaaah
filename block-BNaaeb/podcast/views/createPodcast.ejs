@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+
+<main class="article-main">
+  <section>
+    <h1 class="add-podcast">Add Podcast</h1>
+  </section>
+  <form
+    id="create-article"
+    action="/podcasts"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="form-control">
+      <label for="text"> Title</label>
+      <input type="text" name="title" id="" placeholder="add podcasts" />
+    </div>
+
+    <div class="form-control">
+      <label for="">Types</label>
+      <select name="types" id="">
+        <option value="free">free</option>
+        <option value="vip">vip</option>
+        <option value="premium">premium</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="text">Podcast</label>
+      <input type="file" name="file" placeholder="add podcast " />
+      <small class="display"></small>
+    </div>
+
+    <button type="submit">Create</button>
+  </form>
+</main>
+<%- include('partials/footer') -%>
