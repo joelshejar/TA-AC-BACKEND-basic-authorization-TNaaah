@@ -1,0 +1,81 @@
+<%- include('partials/header') -%>
+
+<main>
+  <section class="profile">
+    <%if(user.avtar) { %>
+    <div>
+      <img src="/uploads/<%= user.avtar%>" alt="" />
+    </div>
+    <% } else {%>
+    <div>
+      <img src="/images/prof.png" alt="" />
+    </div>
+    <% }%>
+
+    <p><%= user.name%></p>
+    <form action="/users/avtar" method="POST" enctype="multipart/form-data">
+      <label for="">Change profile picture</label>
+      <input type="file" name="avtar" />
+      <button>submit</button>
+    </form>
+  </section>
+  <div id="admin-items">
+    <a href="/podcasts"> View podcasts</a>
+  </div>
+  <h1 class="admin-h1">Lists of Members registered</h1>
+  <ul class="index-root">
+    <%if(users.length) { %> <% users.forEach((elm)=>{ %>
+    <li>
+      <h3><%= elm.name%></h3>
+      <%if(elm.avtar) { %>
+      <div id="user-profile">
+        <img src="/uploads/<%= elm.avtar%>" alt="" />
+      </div>
+      <% } else {%>
+      <div id="user-profile">
+        <div >
+        <img src="/images/prof.png" alt="" />
+      </div>
+      <% }%>
+      <p><%= elm.email%></p>
+      <p><%= elm.category%></p>
+      <% if(elm.isBlock) {%>
+      <p class="blocked"><span>Blocked user</span></p>
+      <% } else {%>
+      <p class="active"><span>Active user</span></p>
+      <% }%>
+      <div class="admin-user">
+        <a href="/users/block/<%= elm._id%>"><button>Block</button></a>
+        <a href="/users/unblock/<%= elm._id%>"><button>Unblock</button></a>
+      </div>
+    </li>
+    <% }) %> <% } else {%>
+    <h2>no users available</h2>
+    <% }%>
+  </ul>
+
+  <h1 class="admin-h1">Podcast uploaded by users</h1>
+  <div>
+    <%if(podcasts.length) { %> <% podcasts.forEach((podcast)=>{ %>
+    <ul class="index-root">
+      <li>
+        <h3><%= podcast.title%></h3>
+        <div class="videos">
+          <video src="/uploads/<%= podcast.file%>" controls></video>
+        </div>
+        <p><%= podcast.types%></p>
+        <h5>likes: <span><%= podcast.likes%></span></h5>
+        <div id="approval">
+          <a href="/podcasts/approve/<%= podcast._id%>"
+            ><button>Approve</button></a
+          >
+          <a href="/podcasts/reject/<%=podcast._id%>"
+            ><button>Reject</button></a
+          >
+        </div>
+      </li>
+    </ul>
+    <% } )}%>
+  </div>
+</main>
+<%- include('partials/footer') -%>

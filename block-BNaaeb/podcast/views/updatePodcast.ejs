@@ -1,0 +1,37 @@
+<%- include('partials/header') -%>
+
+<main class="article-main">
+  <div id="update">
+    <div class="update-div">
+      <img src="/images/update.jpg" alt="" />
+    </div>
+    <form
+      id="create-article"
+      action="/podcasts/<%= item.id%>/edit"
+      method="POST"
+    >
+      <div class="form-control">
+        <label for="text"> Title</label>
+        <input
+          type="text"
+          name="title"
+          id=""
+          placeholder="add podcasts"
+          value="<%= item.title%>"
+        />
+      </div>
+
+      <div class="form-control">
+        <label for="">Types</label>
+        <select name="types" id="">
+          <option value="free">free</option>
+          <option value="vip">vip</option>
+          <option value="premium">premium</option>
+        </select>
+      </div>
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</main>
+<%- include('partials/footer') -%>
